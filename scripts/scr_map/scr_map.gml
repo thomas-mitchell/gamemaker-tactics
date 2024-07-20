@@ -7,7 +7,7 @@ function Map(_map_width, _map_height) constructor {
 	// create nodes
 	for(xx=0; xx<map_width; xx+=1) {
 		for(yy=0; yy<map_height; yy+=1) {
-			grid[xx, yy] = instance_create_layer(xx * NODE_SIZE, yy * NODE_SIZE, "Instances", oNode);
+			grid[xx, yy] = instance_create_layer(xx * NODE_SIZE, yy * NODE_SIZE, "Grid", oNode);
 		}
 	}
 
