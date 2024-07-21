@@ -22,7 +22,7 @@ if (hover_node != noone) {
 	draw_set_color(c_white);
 	draw_text(0, 0, _text);
 	
-	_text = hover_node.type;
+	_text = get_terrain_type_name(hover_node.type);
 	if (hover_node.passable) {
 		_text += " passable = true" + " cost = " + string(hover_node.cost);
 	}

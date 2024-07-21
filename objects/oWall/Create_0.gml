@@ -1,2 +1,2 @@
 /// @description Insert description here
-type = "wall";
+type = TERRAIN_TYPE.WALL;

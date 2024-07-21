@@ -1,2 +1,2 @@
 /// @description Insert description here
-type = "rubble";
+type = TERRAIN_TYPE.RUBBLE;

@@ -45,6 +45,7 @@
     {"id":{"name":"oWall","path":"objects/oWall/oWall.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"scr_map","path":"scripts/scr_map/scr_map.yy",},},
+    {"id":{"name":"scr_terrain_type","path":"scripts/scr_terrain_type/scr_terrain_type.yy",},},
     {"id":{"name":"sCursor","path":"sprites/sCursor/sCursor.yy",},},
     {"id":{"name":"sHero","path":"sprites/sHero/sHero.yy",},},
     {"id":{"name":"sNode","path":"sprites/sNode/sNode.yy",},},
