@@ -1,18 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"oHero",
+  "%Name":"oTerrain",
   "eventList":[],
   "managed":true,
-  "name":"oHero",
+  "name":"oTerrain",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
     "path":"folders/Objects.yy",
   },
-  "parentObjectId":{
-    "name":"oActor",
-    "path":"objects/oActor/oActor.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,10 +27,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"sHero",
-    "path":"sprites/sHero/sHero.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

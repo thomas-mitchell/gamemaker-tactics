@@ -21,6 +21,16 @@ if (hover_node != noone) {
 	draw_rectangle(0, 0, string_width(_text), string_height(_text), false);
 	draw_set_color(c_white);
 	draw_text(0, 0, _text);
+	
+	_text = hover_node.type;
+	if (hover_node.passable) {
+		_text += " passable = true" + " cost = " + string(hover_node.cost);
+	}
+	
+	draw_set_color(c_black);
+	draw_rectangle(0, 20, string_width(_text), string_height(_text) + 20, false);
+	draw_set_color(c_white);
+	draw_text(0, 20, _text);
 }
 
 // draw selected actor name

@@ -8,6 +8,8 @@ function Map(_map_width, _map_height) constructor {
 	for(xx=0; xx<map_width; xx+=1) {
 		for(yy=0; yy<map_height; yy+=1) {
 			grid[xx, yy] = instance_create_layer(xx * NODE_SIZE, yy * NODE_SIZE, "Grid", oNode);
+			grid[xx, yy].grid_x = xx;
+			grid[xx, yy].grid_y = yy;
 		}
 	}
 
