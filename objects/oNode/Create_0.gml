@@ -8,4 +8,4 @@ grid_y = 0;
 
 type = TERRAIN_TYPE.NODE;
 
-cost = 1;
+movement_cost = 1;

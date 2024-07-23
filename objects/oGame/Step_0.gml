@@ -15,7 +15,7 @@ switch(state) {
 					case TERRAIN_TYPE.RUBBLE:
 						type = TERRAIN_TYPE.RUBBLE;
 						sprite_index = sRubble;
-						cost = 2;
+						movement_cost = 2;
 						break;
 				}
 	
