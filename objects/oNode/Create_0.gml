@@ -1,4 +1,4 @@
-neighbours = ds_list_create();
+neighbours = [];
 
 occupant = noone;
 passable = true;

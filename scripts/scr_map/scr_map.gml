@@ -20,42 +20,42 @@ function Map(_map_width, _map_height) constructor {
 		
 			// add left neighbour
 			if (xx > 0) {
-				ds_list_add(_node.neighbours, grid[xx-1, yy]);	
+				array_push(_node.neighbours, grid[xx-1, yy]);
 			}
 		
 			// add right neighbour
 			if (xx < map_width-1) {
-				ds_list_add(_node.neighbours, grid[xx+1, yy]);	
+				array_push(_node.neighbours, grid[xx+1, yy]);
 			}
 		
 			// add top neighbour
 			if (yy > 0) {
-				ds_list_add(_node.neighbours, grid[xx, yy-1]);	
+				array_push(_node.neighbours, grid[xx, yy-1]);
 			}
 		
 			// add bottom neighbour
 			if (yy < map_height-1) {
-				ds_list_add(_node.neighbours, grid[xx, yy+1]);	
+				array_push(_node.neighbours, grid[xx, yy+1]);
 			}
 		
 			// add top left neighbour
 			if (xx>0 && yy>0) {
-				ds_list_add(_node.neighbours, grid[xx-1, yy-1]);
+				array_push(_node.neighbours, grid[xx-1, yy-1]);
 			}
 		
 			// add top right neighbour
 			if (xx < map_width-1 && yy>0) {
-				ds_list_add(_node.neighbours, grid[xx+1, yy-1]);
+				array_push(_node.neighbours, grid[xx+1, yy-1]);
 			}
 		
 			// add bottom left neighbour
 			if (xx>0 && yy<map_height-1) {
-				ds_list_add(_node.neighbours, grid[xx-1, yy+1]);
+				array_push(_node.neighbours, grid[xx-1, yy+1]);
 			}
 		
 			// add bottom right neighbour
 			if (xx<map_width-1 && yy<map_height-1) {
-				ds_list_add(_node.neighbours, grid[xx+1, yy+1]);
+				array_push(_node.neighbours, grid[xx+1, yy+1]);
 			}
 		}
 	}
