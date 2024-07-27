@@ -69,29 +69,19 @@ function Map(_map_width, _map_height) constructor {
 		}
 	}
 	
-	color_move_node = function(_node, _move, _actions) {
-		if (_actions > 1) {
-			if(_node.g_score > _move) {
-				_node.color = c_yellow;	
-			} else {
-				_node.color = c_aqua;	
-			}
-		} else {
-			_node.color = c_yellow;	
+	color_nodes = function(_node_list, _color) {
+		for (index=0; index<array_length(_node_list); index++) {
+			var _node = _node_list[index];
+			_node.color = _color;
 		}
 	}
 	
-	get_movement_range = function(_start_node, _movement, _actions)  {
+	get_movement_nodes = function(_start_node, _range)  {
 		wipe_nodes();
 		
-		var _open_nodes, _closed_nodes;
-		
-		// populate relevant variables from arguments
-		var _range = _movement * _actions;
-		
 		// create data structures
-		_open_nodes = ds_priority_create();
-		_closed_nodes = [];
+		var _open_nodes = ds_priority_create();
+		var _closed_nodes = [];
 		
 		// add starting node to open list
 		ds_priority_add(_open_nodes, _start_node, _start_node.g_score);
@@ -142,11 +132,11 @@ function Map(_map_width, _map_height) constructor {
 		
 		ds_priority_destroy(_open_nodes);
 		
-		// color nodes
-		for(ii=0; ii<array_length(_closed_nodes); ii++) {
-			var _current_node = _closed_nodes[ii];
-			_current_node.move_node = true;
-			color_move_node(_current_node, _movement, _actions);
+		// mark all closed nodes as potential movement positions
+		for(var index=9; index<array_length(_closed_nodes); index++) {
+			_closed_nodes[index].move_node = true;	
 		}
+		
+		return _closed_nodes;
 	}
 }

@@ -16,7 +16,14 @@ if (mouse_check_button_pressed(mb_left)) {
 	if (hover_node.occupant != noone) {
 		selected_actor = hover_node.occupant;
 		selected_actor.actions = 2;
-		global.map.get_movement_range(global.map.grid[selected_actor.grid_x][selected_actor.grid_y], selected_actor.move, selected_actor.actions);
+		
+		// calculate movement nodes
+		var _one_move_nodes = global.map.get_movement_nodes(global.map.grid[selected_actor.grid_x][selected_actor.grid_y], selected_actor.move);
+		var _full_move_nodes = global.map.get_movement_nodes(global.map.grid[selected_actor.grid_x][selected_actor.grid_y], selected_actor.move * selected_actor.actions);
+		
+		// color nodes
+		global.map.color_nodes(_full_move_nodes, c_yellow);
+		global.map.color_nodes(_one_move_nodes, c_aqua);
 	} else {
 		selected_actor = noone;
 		global.map.wipe_nodes();
@@ -44,7 +51,8 @@ if (mouse_check_button_pressed(mb_right)) {
 			selected_actor.actions -= 1;
 			
 			if (selected_actor.actions > 0) {
-				global.map.get_movement_range(hover_node, selected_actor.move, selected_actor.actions);	
+				var _move_nodes = global.map.get_movement_nodes(global.map.grid[selected_actor.grid_x][selected_actor.grid_y], selected_actor.move);	
+				global.map.color_nodes(_move_nodes, c_yellow);
 			} else {
 				selected_actor = noone;
 				global.map.wipe_nodes();
