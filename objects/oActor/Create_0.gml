@@ -8,7 +8,10 @@ name = "Error";
 move = 5;
 actions = 2;
 
-state = "idle";
+//state = "idle";
+state_machine = new StateMachine();
+var _initial_state = new StateActorIdle();
+state_machine.swap(_initial_state);
 
 // pathfinding variables
 movement_path = path_add();

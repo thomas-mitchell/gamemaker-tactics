@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_actor_move_to_node",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_actor_move_to_node",
+  "parent":{
+    "name":"actor",
+    "path":"folders/Scripts/actor.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

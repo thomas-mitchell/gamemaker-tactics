@@ -139,4 +139,17 @@ function Map(_map_width, _map_height) constructor {
 		
 		return _closed_nodes;
 	}
+
+	get_path = function(_start_node, _end_node) {
+		var _path = [];
+		var _current = _end_node;
+		
+		array_push(_path, _current);
+		while (_current.parent != noone) {
+			array_push(_path, _current.parent);
+			_current = _current.parent;
+		}
+		
+		return array_reverse(_path);	
+	}
 }

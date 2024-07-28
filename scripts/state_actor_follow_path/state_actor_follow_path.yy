@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"state_actor_follow_path",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"state_actor_follow_path",
+  "parent":{
+    "name":"actor",
+    "path":"folders/Scripts/states/actor.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
