@@ -1,8 +1,6 @@
 /// @description Insert description here
 
-// clear path
-path_clear_points(movement_path);
-state = "idle";
+state_machine.swap(new StateActorIdle()); 
 
 if (actions > 0) {
 	oCursor.selected_actor = id;

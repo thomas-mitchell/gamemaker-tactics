@@ -35,8 +35,6 @@ if (mouse_check_button_pressed(mb_left)) {
 // move selected actor on right click
 if (mouse_check_button_pressed(mb_right)) {
 	if(selected_actor != noone && hover_node.move_node) { // selected_actor != noone && hover_node.occupant == noone && hover_node.passable
-		//var _current = hover_node;
-		
 		scr_actor_move_to_node(selected_actor, hover_node);
 		
 		// update selected actor and wipe nodes
