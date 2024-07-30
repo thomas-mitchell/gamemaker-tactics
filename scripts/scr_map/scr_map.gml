@@ -133,7 +133,7 @@ function Map(_map_width, _map_height) constructor {
 		ds_priority_destroy(_open_nodes);
 		
 		// mark all closed nodes except the start node as potential movement positions
-		for(var index=9; index<array_length(_closed_nodes); index++) {
+		for(var index=0; index<array_length(_closed_nodes); index++) {
 			_closed_nodes[index].move_node = true;	
 		}
 		_start_node.move_node = false;
