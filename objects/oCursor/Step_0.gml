@@ -12,25 +12,25 @@ if (grid_x < 0 || grid_y < 0 || grid_x >= global.map.map_width || grid_y >= glob
 }
 
 // select actor if clicked
-if (mouse_check_button_pressed(mb_left)) {
-	if (hover_node.occupant != noone) {
-		if (hover_node.occupant != selected_actor) {
-			selected_actor = hover_node.occupant;
-			selected_actor.actions = 2;
+//if (mouse_check_button_pressed(mb_left)) {
+//	if (hover_node.occupant != noone) {
+//		if (hover_node.occupant != selected_actor) {
+//			selected_actor = hover_node.occupant;
+//			selected_actor.actions = 2;
 		
-			// calculate movement nodes
-			var _one_move_nodes = global.map.get_movement_nodes(global.map.grid[selected_actor.grid_x][selected_actor.grid_y], selected_actor.move);
-			var _full_move_nodes = global.map.get_movement_nodes(global.map.grid[selected_actor.grid_x][selected_actor.grid_y], selected_actor.move * selected_actor.actions);
+//			// calculate movement nodes
+//			var _one_move_nodes = global.map.get_movement_nodes(global.map.grid[selected_actor.grid_x][selected_actor.grid_y], selected_actor.move);
+//			var _full_move_nodes = global.map.get_movement_nodes(global.map.grid[selected_actor.grid_x][selected_actor.grid_y], selected_actor.move * selected_actor.actions);
 		
-			// color nodes
-			global.map.color_nodes(_full_move_nodes, c_yellow);
-			global.map.color_nodes(_one_move_nodes, c_aqua);
-		}
-	} else {
-		selected_actor = noone;
-		global.map.wipe_nodes();
-	}
-}
+//			// color nodes
+//			global.map.color_nodes(_full_move_nodes, c_yellow);
+//			global.map.color_nodes(_one_move_nodes, c_aqua);
+//		}
+//	} else {
+//		selected_actor = noone;
+//		global.map.wipe_nodes();
+//	}
+//}
 
 // move selected actor on right click
 if (mouse_check_button_pressed(mb_right)) {
@@ -47,8 +47,9 @@ if (mouse_check_button_pressed(mb_right)) {
 		}
 		
 		selected_actor = noone;
-	} else {
-		selected_actor = noone;
-		global.map.wipe_nodes();
 	}
+	//else {
+	//	selected_actor = noone;
+	//	global.map.wipe_nodes();
+	//}
 }

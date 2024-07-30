@@ -8,6 +8,10 @@ name = "Error";
 move = 5;
 actions = 2;
 
+// Probably going to delete these for card based initiative instead
+initiative = 0;
+init_roll = 0;
+
 //state = "idle";
 state_machine = new StateMachine();
 var _initial_state = new StateActorIdle();

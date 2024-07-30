@@ -141,6 +141,8 @@ function Map(_map_width, _map_height) constructor {
 		return _closed_nodes;
 	}
 
+	// Returns an array of nodes forming the path from start node to end node
+	// Requires get_movement_nodes to have been previously called from the actor on the start node
 	get_path = function(_start_node, _end_node) {
 		var _path = [];
 		var _current = _end_node;
