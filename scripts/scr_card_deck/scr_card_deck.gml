@@ -1,9 +1,5 @@
 // Script assets have changed for v2.3.0 see
 function Card(_rank = noone, _suit = noone) constructor {
-	rank = _rank;
-	suit = _suit;
-	name = get_card_name();
-	
 	get_rank_name = function() {
 		if (rank >= 2 && rank <= 10) {
 			return string(rank);	
@@ -42,6 +38,10 @@ function Card(_rank = noone, _suit = noone) constructor {
 			return get_suit_name() + " " + get_rank_name();	
 		}
 	}
+	
+	rank = _rank;
+	suit = _suit;
+	name = get_card_name();
 }
 
 function CardDeck() constructor {
@@ -51,7 +51,7 @@ function CardDeck() constructor {
 		deck = [];
 		
 		var _ranks = [2,3,4,5,6,7,8,9,10,11,12,13,14];
-		var _suits = [1,2,3,4];
+		var _suits = [0,1,2,3];
 		
 		for (var _suit_index=0; _suit_index<array_length(_suits); _suit_index++) {
 			for (var _rank_index=0; _rank_index<array_length(_ranks); _rank_index++) {
@@ -70,4 +70,26 @@ function CardDeck() constructor {
 	shuffle = function() {
 		deck = array_shuffle(deck);	
 	}
+	
+	compare_cards_asc = function(_card1, _card2) {
+		if (_card1.rank != _card2.rank) {
+			return _card1.rank - _card2.rank;	
+		} else {
+			return _card1.suit - _card2.suit;	
+		}
+	}
+	
+	sort_asc = function() {
+		array_sort(deck, compare_cards_asc);
+	}
+	
+	compare_cards_desc = function(_card1, _card2) {
+		return -compare_cards_asc(_card1, _card2);
+	}
+	
+	sort_desc = function() {
+		array_sort(deck, compare_cards_desc);
+	}
+	
+	reset();
 }
