@@ -34,23 +34,19 @@ switch(state) {
 		break;
 		
 	case "roll_initiative":
-		temp_init = ds_priority_create();
-		
 		with (oActor) {
-			var _init_roll = irandom_range(1, 20) + initiative;
-			ds_priority_add(other.temp_init, id, _init_roll);
+			initiative_card = other.initiative_deck.get_card();
+			array_push(other.turn_order, id);
 		}
 		
-		while (ds_priority_size(temp_init) > 0) {
-			ds_list_add(turn_order, ds_priority_delete_max(temp_init));	
+		// Sort turn_order
+		var _compare_initiative_cards_desc = function(_actor1, _actor2) {
+			return initiative_deck.compare_cards_desc(_actor1.initiative_card, _actor2.initiative_card);
 		}
+		array_sort(turn_order, _compare_initiative_cards_desc);
 		
-		turn_max = ds_list_size(turn_order);
-		
-		ds_priority_destroy(temp_init);
-		
+		turn_max = array_length(turn_order);
 		state = "ready";
-		
 		break;
 		
 	case "ready":
@@ -62,17 +58,15 @@ switch(state) {
 				round_counter += 1;
 			}
 			
-			current_actor = ds_list_find_value(turn_order, turn_counter);
-			
+			current_actor = turn_order[turn_counter];
 			current_actor.actions = 2;
 			oCursor.selected_actor = current_actor;
 			
-			// Might want to move the next two blocks into a separate function
-			// calculate movement nodes
+			// Calculate movement nodes
 			var _one_move_nodes = global.map.get_movement_nodes(global.map.grid[current_actor.grid_x][current_actor.grid_y], current_actor.move);
 			var _full_move_nodes = global.map.get_movement_nodes(global.map.grid[current_actor.grid_x][current_actor.grid_y], current_actor.move * current_actor.actions);
 		
-			// color nodes
+			// Color nodes
 			global.map.color_nodes(_full_move_nodes, c_yellow);
 			global.map.color_nodes(_one_move_nodes, c_aqua);
 		}

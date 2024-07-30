@@ -91,5 +91,18 @@ function CardDeck() constructor {
 		array_sort(deck, compare_cards_desc);
 	}
 	
+	get_card = function() {
+		// Probably want to enable this eventually, but might need to ensure that there is no possibility of getting the same card as one that
+		// is already in play?
+		//if (array_size(deck) < 1) {
+		//	reset();
+		//	shuffle();
+		//}
+		
+		return array_shift(deck);
+	}
+	
+	// Start the deck full of cards and shuffled
 	reset();
+	shuffle();
 }

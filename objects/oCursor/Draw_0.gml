@@ -33,9 +33,15 @@ if (hover_node != noone) {
 	draw_text(0, 20, _text);
 }
 
-// draw selected actor name
+
 if (selected_actor != noone) {
+	// Draw selected actor name
 	var _text = selected_actor.name;
+	
+	// Draw initiative card name instead
+	//if (selected_actor.initiative_card != noone) {
+	//	_text = selected_actor.initiative_card.name;
+	//}
 	
 	draw_set_color(c_black);
 	draw_rectangle(0, room_height, string_width(_text), room_height - string_height(_text), false);

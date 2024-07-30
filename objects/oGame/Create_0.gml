@@ -8,12 +8,12 @@ randomize();
 //random_set_seed(123456);
 
 // Turn tracking variables
-turn_order = ds_list_create();
+turn_order = [];
 turn_counter = -1;
 turn_max = 0;	// Not sure about this, might be more intuitive to just use array_size(turn_order)
 current_actor = noone;
 round_counter = 1;
-temp_init = noone;
+initiative_deck = new CardDeck(); 
 
 // Create the map
 var _map_width = room_width / NODE_SIZE;

@@ -9,8 +9,9 @@ move = 5;
 actions = 2;
 
 // Probably going to delete these for card based initiative instead
-initiative = 0;
-init_roll = 0;
+//initiative = 0;
+//init_roll = 0;
+initiative_card = noone;
 
 //state = "idle";
 state_machine = new StateMachine();
