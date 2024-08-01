@@ -17,35 +17,49 @@ if (hover_node != noone) {
 		_text += "noone";	
 	}
 	
-	draw_set_color(c_black);
-	draw_rectangle(0, 0, string_width(_text), string_height(_text), false);
-	draw_set_color(c_white);
-	draw_text(0, 0, _text);
+	draw_text_block(0, 0, _text, c_white, c_black);
 	
 	_text = get_terrain_type_name(hover_node.type);
 	if (hover_node.passable) {
 		_text += " passable = true" + " movement_cost = " + string(hover_node.movement_cost);
 	}
 	
-	draw_set_color(c_black);
-	draw_rectangle(0, 20, string_width(_text), string_height(_text) + 20, false);
-	draw_set_color(c_white);
-	draw_text(0, 20, _text);
+	draw_text_block(0, 20, _text, c_white, c_black);
 }
 
 
 if (selected_actor != noone) {
-	// Draw selected actor name
+	// Draw selected actor name and status
 	var _text = selected_actor.name;
+	if (selected_actor.shaken) {
+		_text += " (shaken)";	
+	}
+	if (selected_actor.wounds > 0) {
+		var _wounds_text = string(selected_actor.wounds) + " wound";
+		if (selected_actor.wounds > 1) {
+			_wounds_text += "s";	
+		}
+		_text += " (" +_wounds_text + ")";	
+	}
 	
 	// Draw initiative card name instead
 	//if (selected_actor.initiative_card != noone) {
 	//	_text = selected_actor.initiative_card.name;
 	//}
 	
-	draw_set_color(c_black);
-	draw_rectangle(0, room_height, string_width(_text), room_height - string_height(_text), false);
-	
-	draw_set_color(c_white);
-	draw_text(0, room_height - string_height(_text), _text);
+	// Draw text block in bottom left corner
+	var _text_y = room_height - string_height(_text);
+	draw_text_block(0, _text_y, _text, c_white, c_black);
+}
+
+// DEBUG Draw oGame current actor
+if(true) {
+	var _text = "Current actor: ";
+	if (oGame.current_actor == noone) {
+		_text += "noone";	
+	} else {
+		_text += oGame.current_actor.name;	
+	}
+	var _text_x = room_width - string_width(_text);
+	draw_text_block(_text_x, 0, _text, c_white, c_black);
 }

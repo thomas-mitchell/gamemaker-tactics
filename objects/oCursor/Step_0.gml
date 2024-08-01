@@ -19,8 +19,8 @@ if (grid_x < 0 || grid_y < 0 || grid_x >= global.map.map_width || grid_y >= glob
 //			selected_actor.actions = 2;
 		
 //			// calculate movement nodes
-//			var _one_move_nodes = global.map.get_movement_nodes(global.map.grid[selected_actor.grid_x][selected_actor.grid_y], selected_actor.move);
-//			var _full_move_nodes = global.map.get_movement_nodes(global.map.grid[selected_actor.grid_x][selected_actor.grid_y], selected_actor.move * selected_actor.actions);
+//			var _one_move_nodes = global.map.get_movement_nodes(global.map.grid[selected_actor.grid_x][selected_actor.grid_y], selected_actor.pace);
+//			var _full_move_nodes = global.map.get_movement_nodes(global.map.grid[selected_actor.grid_x][selected_actor.grid_y], selected_actor.pace * selected_actor.actions);
 		
 //			// color nodes
 //			global.map.color_nodes(_full_move_nodes, c_yellow);
@@ -38,7 +38,7 @@ if (mouse_check_button_pressed(mb_right)) {
 		scr_actor_move_to_node(selected_actor, hover_node);
 		
 		// update selected actor and wipe nodes
-		if (hover_node.g_score > selected_actor.move) {
+		if (hover_node.g_score > selected_actor.pace) {
 			selected_actor.actions -= 2;
 			global.map.wipe_nodes();
 		} else {

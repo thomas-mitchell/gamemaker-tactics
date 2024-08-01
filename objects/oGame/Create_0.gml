@@ -2,6 +2,9 @@
 #macro NODE_SIZE 32		// Renamed from GRID_SIZE
 #macro NODE_CENTER_OFFSET 16
 
+#macro RED_ARMY 10
+#macro BLUE_ARMY 20
+
 state = "initializing";
 
 randomize();

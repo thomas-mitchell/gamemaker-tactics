@@ -2,15 +2,30 @@
 grid_x = 0;
 grid_y = 0;
 
-name = "Error";
+army = BLUE_ARMY;
 
-// character statistics
-move = 5;
+// Character statistics /////////////////////////////
+name = "Error";
+race = "Human";
+wildcard = false;
+wounds = 0;
+max_wounds = 0;
+shaken = false;
+// Attributes
+attribute_agility_die = 4;
+attribute_smarts_die = 4;
+attribute_spirit_die = 4;
+attribute_strength_die = 4;
+attribute_vigor_die = 4;
+// Skills
+skill_fighting_die = 0;
+skill_shooting_die = 0;
+
+
+// movement variables
+pace = 5;
 actions = 2;
 
-// Probably going to delete these for card based initiative instead
-//initiative = 0;
-//init_roll = 0;
 initiative_card = noone;
 
 //state = "idle";

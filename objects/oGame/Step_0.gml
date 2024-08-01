@@ -60,15 +60,23 @@ switch(state) {
 			
 			current_actor = turn_order[turn_counter];
 			current_actor.actions = 2;
-			oCursor.selected_actor = current_actor;
 			
-			// Calculate movement nodes
-			var _one_move_nodes = global.map.get_movement_nodes(global.map.grid[current_actor.grid_x][current_actor.grid_y], current_actor.move);
-			var _full_move_nodes = global.map.get_movement_nodes(global.map.grid[current_actor.grid_x][current_actor.grid_y], current_actor.move * current_actor.actions);
+			// Only pass off actions and cursor control if actor is BLUE_ARMY
+			// otherwise set flash variable to true and set alarm
+			if (current_actor.army == BLUE_ARMY) {
+				oCursor.selected_actor = current_actor;
+				
+				// Calculate movement nodes
+				var _one_move_nodes = global.map.get_movement_nodes(global.map.grid[current_actor.grid_x][current_actor.grid_y], current_actor.pace);
+				var _full_move_nodes = global.map.get_movement_nodes(global.map.grid[current_actor.grid_x][current_actor.grid_y], current_actor.pace * current_actor.actions);
 		
-			// Color nodes
-			global.map.color_nodes(_full_move_nodes, c_yellow);
-			global.map.color_nodes(_one_move_nodes, c_aqua);
+				// Color movement nodes
+				global.map.color_nodes(_full_move_nodes, c_yellow);
+				global.map.color_nodes(_one_move_nodes, c_aqua);
+			} else {
+				current_actor.flash = true;
+				current_actor.alarm[0] = 60;
+			}
 		}
 		break;
 }

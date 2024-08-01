@@ -1,6 +1,6 @@
 /// @description Insert description here
 
-// if cursor is above another node draw a line
+// if cursor is above another node and this is the selected actor draw a line to hover node
 if(oCursor.hover_node != noone && oCursor.hover_node != global.map.grid[grid_x, grid_y] && oCursor.selected_actor == id) {
 	var _current = oCursor.hover_node;
 	var _line_width = 4;
@@ -13,3 +13,12 @@ if(oCursor.hover_node != noone && oCursor.hover_node != global.map.grid[grid_x, 
 }
 
 draw_self();
+//var _color = shaken ? c_red : c_white;
+//draw_sprite_ext(sprite_index, -1, x, y, 1, 1, 0, _color, 1);
+
+// Draw shaken indicator
+if (shaken) {
+	var _text = "S";
+	draw_set_color(c_black);
+	draw_text(x + 2, y, _text);
+}
