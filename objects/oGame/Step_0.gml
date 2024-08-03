@@ -7,14 +7,14 @@ switch(state) {
 	
 				switch(_temp_terrain.type) {
 					case TERRAIN_TYPE.WALL:
+						instance_change(oWall, true);
 						type = TERRAIN_TYPE.WALL;
-						sprite_index = sWall;
 						passable = false;
 						break;
 		
 					case TERRAIN_TYPE.RUBBLE:
+						instance_change(oRubble, true);
 						type = TERRAIN_TYPE.RUBBLE;
-						sprite_index = sRubble;
 						movement_cost = 2;
 						break;
 				}
@@ -60,19 +60,25 @@ switch(state) {
 			
 			current_actor = turn_order[turn_counter];
 			current_actor.actions = 2;
+			current_actor.can_act = true;
 			
 			// Only pass off actions and cursor control if actor is BLUE_ARMY
 			// otherwise set flash variable to true and set alarm
 			if (current_actor.army == BLUE_ARMY) {
 				oCursor.selected_actor = current_actor;
 				
-				// Calculate movement nodes
+				// Calculate movement nodes and color
 				var _one_move_nodes = global.map.get_movement_nodes(global.map.grid[current_actor.grid_x][current_actor.grid_y], current_actor.pace);
 				var _full_move_nodes = global.map.get_movement_nodes(global.map.grid[current_actor.grid_x][current_actor.grid_y], current_actor.pace * current_actor.actions);
-		
-				// Color movement nodes
 				global.map.color_nodes(_full_move_nodes, c_yellow);
 				global.map.color_nodes(_one_move_nodes, c_aqua);
+				
+				// Calculate and color ranged attack nodes
+				var _weapon = oCursor.selected_actor.equip_main_hand;
+				if (_weapon && _weapon.is_ranged) {
+					// Currently this is handling the coloring and setting attack_node, and returns nothing
+					global.map.get_attack_nodes_ranged(oCursor.selected_actor, _weapon.range_long);
+				}
 			} else {
 				current_actor.flash = true;
 				current_actor.alarm[0] = 60;

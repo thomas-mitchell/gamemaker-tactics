@@ -63,6 +63,7 @@ function Map(_map_width, _map_height) constructor {
 	wipe_nodes = function() {
 		with(oNode) {
 			move_node = false;
+			attack_node = false;
 			g_score = 0;
 			parent = noone;
 			color = c_white;
@@ -154,5 +155,43 @@ function Map(_map_width, _map_height) constructor {
 		}
 		
 		return array_reverse(_path);	
+	}
+
+	get_range = function(_start_node, _end_node) {
+		var _start_x = _start_node.x + NODE_CENTER_OFFSET;
+		var _start_y = _start_node.y + NODE_CENTER_OFFSET;
+		var _end_x = _end_node.x + NODE_CENTER_OFFSET;
+		var _end_y = _end_node.y + NODE_CENTER_OFFSET;
+		
+		var _pixel_range = point_distance(_start_x, _start_y, _end_x, _end_y);
+		var _node_range = floor(_pixel_range / NODE_SIZE);
+		
+		return _node_range;
+	}
+	
+	has_line_of_sight = function(_start_node, _end_node) {
+		var _start_x = _start_node.x + NODE_CENTER_OFFSET;
+		var _start_y = _start_node.y + NODE_CENTER_OFFSET;
+		var _end_x = _end_node.x + NODE_CENTER_OFFSET;
+		var _end_y = _end_node.y + NODE_CENTER_OFFSET;
+		
+		return collision_line(_start_x, _start_y, _end_x, _end_y, oWall, false, false) == noone;
+	}
+
+	get_attack_nodes_ranged = function(_actor, _range) {
+		with(oActor) {
+			var _attacker_node = global.map.grid[_actor.grid_x][_actor.grid_y];
+			
+			if (army != _actor.army) {
+				var _current_node = global.map.grid[grid_x][grid_y];
+				if (global.map.get_range(_attacker_node, _current_node) < _range) {
+					if (global.map.has_line_of_sight(_attacker_node, _current_node)) {
+						// TODO Probably want to just return a list of nodes and do this in the calling function 
+						_current_node.attack_node = true;
+						_current_node.color = c_red;
+					}
+				}
+			}
+		}
 	}
 }

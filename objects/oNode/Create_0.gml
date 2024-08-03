@@ -14,4 +14,5 @@ type = TERRAIN_TYPE.NODE;
 parent = noone;
 g_score = 0;
 move_node = false;
+attack_node = false;
 movement_cost = 1;
