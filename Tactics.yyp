@@ -57,6 +57,7 @@
     {"id":{"name":"scr_state_machine","path":"scripts/scr_state_machine/scr_state_machine.yy",},},
     {"id":{"name":"scr_state","path":"scripts/scr_state/scr_state.yy",},},
     {"id":{"name":"scr_terrain_type","path":"scripts/scr_terrain_type/scr_terrain_type.yy",},},
+    {"id":{"name":"scr_weapon","path":"scripts/scr_weapon/scr_weapon.yy",},},
     {"id":{"name":"state_actor_follow_path","path":"scripts/state_actor_follow_path/state_actor_follow_path.yy",},},
     {"id":{"name":"state_actor_idle","path":"scripts/state_actor_idle/state_actor_idle.yy",},},
     {"id":{"name":"sCursor","path":"sprites/sCursor/sCursor.yy",},},
