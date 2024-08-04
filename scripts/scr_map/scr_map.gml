@@ -179,6 +179,8 @@ function Map(_map_width, _map_height) constructor {
 	}
 
 	get_attack_nodes_ranged = function(_actor, _range) {
+		var _attack_nodes = [];
+		
 		with(oActor) {
 			var _attacker_node = global.map.grid[_actor.grid_x][_actor.grid_y];
 			
@@ -186,12 +188,12 @@ function Map(_map_width, _map_height) constructor {
 				var _current_node = global.map.grid[grid_x][grid_y];
 				if (global.map.get_range(_attacker_node, _current_node) < _range) {
 					if (global.map.has_line_of_sight(_attacker_node, _current_node)) {
-						// TODO Probably want to just return a list of nodes and do this in the calling function 
-						_current_node.attack_node = true;
-						_current_node.color = c_red;
+						array_push(_attack_nodes, _current_node);
 					}
 				}
 			}
 		}
+		
+		return _attack_nodes;
 	}
 }

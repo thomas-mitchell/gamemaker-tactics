@@ -11,8 +11,12 @@ if (actions > 0) {
 	if (can_act) {
 		var _weapon = oCursor.selected_actor.equip_main_hand;
 		if (_weapon && _weapon.is_ranged) {
-			// Currently this is handling the coloring and setting attack_node, and returns nothing
-			global.map.get_attack_nodes_ranged(id, _weapon.range_long);
+			var _attack_nodes = global.map.get_attack_nodes_ranged(id, _weapon.range_long);
+			for (var _index=0; _index<array_length(_attack_nodes); _index++) {
+				var _current_node = _attack_nodes[_index];
+				_current_node.attack_node = true;
+				_current_node.color = c_red;
+			}
 		}
 	}
 } else {
