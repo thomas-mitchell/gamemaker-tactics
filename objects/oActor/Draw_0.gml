@@ -32,14 +32,18 @@ if (oCursor.selected_actor == id) {
 	//if(oCursor.hover_node != noone && oCursor.hover_node != global.map.grid[grid_x, grid_y] ) {
 }
 
-
-draw_self();
-//var _color = shaken ? c_red : c_white;
-//draw_sprite_ext(sprite_index, -1, x, y, 1, 1, 0, _color, 1);
+// Draw self (in greyscale if shaken)
+if (shaken) {
+	shader_set(sh_greyscale);
+	draw_self();
+	shader_reset();
+} else {
+	draw_self();
+}
 
 // Draw shaken indicator
-if (shaken) {
-	var _text = "S";
-	draw_set_color(c_black);
-	draw_text(x + 2, y, _text);
-}
+//if (shaken) {
+//	var _text = "S";
+//	draw_set_color(c_black);
+//	draw_text(x + 2, y, _text);
+//}

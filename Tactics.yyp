@@ -60,6 +60,7 @@
     {"id":{"name":"scr_weapon","path":"scripts/scr_weapon/scr_weapon.yy",},},
     {"id":{"name":"state_actor_follow_path","path":"scripts/state_actor_follow_path/state_actor_follow_path.yy",},},
     {"id":{"name":"state_actor_idle","path":"scripts/state_actor_idle/state_actor_idle.yy",},},
+    {"id":{"name":"sh_greyscale","path":"shaders/sh_greyscale/sh_greyscale.yy",},},
     {"id":{"name":"sCursor","path":"sprites/sCursor/sCursor.yy",},},
     {"id":{"name":"sHero","path":"sprites/sHero/sHero.yy",},},
     {"id":{"name":"sNode","path":"sprites/sNode/sNode.yy",},},
