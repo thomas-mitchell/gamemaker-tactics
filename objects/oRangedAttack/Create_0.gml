@@ -5,6 +5,7 @@
 // damage and damage type
 damage = 0;
 damage_type = "piercing";
+status = "";
 
 target = noone;
 

@@ -6,7 +6,7 @@ function scr_actor_move_to_node(_actor, _node) {
 	
 	for (var _index=0; _index<array_length(_nodes_path); _index++) {
 		var _speed = 100;
-		path_add_point(selected_actor.movement_path, _nodes_path[_index].x, _nodes_path[_index].y, _speed);
+		path_add_point(_actor.movement_path, _nodes_path[_index].x, _nodes_path[_index].y, _speed);
 	}
 	
 	// create and apply new state to actor
@@ -14,7 +14,7 @@ function scr_actor_move_to_node(_actor, _node) {
 	_actor.state_machine.swap( _follow_state);
 	
 	// update grid and actor
-	global.map.grid[selected_actor.grid_x][selected_actor.grid_y].occupant = noone;
+	_start_node.occupant = noone;
 		
 	_actor.grid_x = grid_x;
 	_actor.grid_y = grid_y;

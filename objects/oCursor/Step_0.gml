@@ -58,10 +58,12 @@ if (mouse_check_button_pressed(mb_right)) {
 		selected_actor.actions -= 1;
 		selected_actor.attack_target = hover_node.occupant;
 		
-		//selected_actor.state = "begin attack";
-		selected_actor.state_machine.swap(new StateActorAttack(selected_actor, hover_node.occupant, ATTACK_TYPE.RANGED));
-		
-		selected_actor.attack_timer = 20;
+		var _actor_node = global.map.grid[selected_actor.grid_x][selected_actor.grid_y];
+		if (global.map.get_range(_actor_node, hover_node) <= 1) {
+			selected_actor.state_machine.swap(new StateActorAttack(selected_actor, hover_node.occupant, ATTACK_TYPE.MELEE));
+		} else {
+			selected_actor.state_machine.swap(new StateActorAttack(selected_actor, hover_node.occupant, ATTACK_TYPE.RANGED));
+		}
 		
 		selected_actor = noone;
 		global.map.wipe_nodes();

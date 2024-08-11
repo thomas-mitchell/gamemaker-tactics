@@ -60,7 +60,7 @@ function Weapon(_name) constructor {
 	roll_damage_melee = function(_attacker, _target) {
 		var _total = 0;
 		for (var _index=0; _index<damage_melee_die_number; _index++) {
-			_total += irandom_range(1, damage_melee_die_number);
+			_total += irandom_range(1, damage_melee_die_type);
 		}
 		_total += damage_melee_bonus;
 		
@@ -73,7 +73,7 @@ function Weapon(_name) constructor {
 	roll_damage_ranged = function(_attacker, _target) {
 		var _total = 0;
 		for (var _index=0; _index<damage_ranged_die_number; _index++) {
-			_total += irandom_range(1, damage_ranged_die_number);
+			_total += irandom_range(1, damage_ranged_die_type);
 		}
 		_total += damage_ranged_bonus;
 		

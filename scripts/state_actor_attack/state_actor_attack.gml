@@ -12,6 +12,8 @@ function StateActorAttack(_attacker, _target, _attack_type): State() constructor
 	update = function() {
 		switch(attack_type) {
 			case ATTACK_TYPE.RANGED:
+				show_debug_message(attacker.name + " making ranged attack with " + attacker.equip_main_hand.name); // TODO Remove
+				
 				// Make attack roll
 				var _attack_roll = attacker.equip_main_hand.roll_attack_ranged(attacker, target);
 				
@@ -69,6 +71,46 @@ function StateActorAttack(_attacker, _target, _attack_type): State() constructor
 				break;
 				
 			case ATTACK_TYPE.MELEE:
+				show_debug_message(attacker.name + " making melee attack with " + attacker.equip_main_hand.name); // TODO Remove
+				
+				// Make attack roll
+				var _attack_roll = attacker.equip_main_hand.roll_attack_melee(attacker, target);
+				
+				// Determine attack success
+				var _attack_raises = scr_calculate_roll_results(target.get_parry(), _attack_roll);
+				if (_attack_raises > 0) {
+					var _attack_status = "crit";	
+				} else if (_attack_raises == 0) {
+					var _attack_status = "hit";	
+				} else {
+					var _attack_status = "miss";	
+				}
+				
+				// Make damamge roll
+				var _temp_damage = 0;
+				if (_attack_status != "miss") {
+					_temp_damage = attacker.equip_main_hand.roll_damage_melee(attacker, target);
+					
+					if (_attack_status == "crit") {
+						_temp_damage += irandom_range(1, 6);	
+					}
+				}
+				
+				scr_resolve_attack(target, _attack_status, _temp_damage);
+				
+				// Return control to cursor
+				if (attacker.actions > 0) {
+					oCursor.selected_actor = attacker.id;
+					
+					// Calculate movement nodes and color
+					var _one_move_nodes = global.map.get_movement_nodes(global.map.grid[oGame.current_actor.grid_x][oGame.current_actor.grid_y], oGame.current_actor.pace);
+					global.map.color_nodes(_one_move_nodes, c_yellow);
+				} else {
+					oGame.current_actor = noone;	
+				}
+				
+				attacker.state_machine.swap(new StateActorIdle()); 
+				
 				break;
 		}
 	}

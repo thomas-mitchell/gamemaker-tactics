@@ -157,6 +157,7 @@ function Map(_map_width, _map_height) constructor {
 		return array_reverse(_path);	
 	}
 
+	// Get distance between nodes in number of nodes
 	get_range = function(_start_node, _end_node) {
 		var _start_x = _start_node.x + NODE_CENTER_OFFSET;
 		var _start_y = _start_node.y + NODE_CENTER_OFFSET;
@@ -190,6 +191,25 @@ function Map(_map_width, _map_height) constructor {
 					if (global.map.has_line_of_sight(_attacker_node, _current_node)) {
 						array_push(_attack_nodes, _current_node);
 					}
+				}
+			}
+		}
+		
+		return _attack_nodes;
+	}
+	
+	get_attack_nodes_melee = function(_actor) {
+		var _attack_nodes = [];
+		var _attacker_node = grid[_actor.grid_x][_actor.grid_y];
+		
+		with (oActor) {
+			if (army != _actor.army) {
+				var _target_node = global.map.grid[grid_x][grid_y];
+				if (global.map.get_range(_attacker_node, _target_node) <= 1) {
+					array_push(_attack_nodes, _target_node);
+					
+					// _target_node.attack_node = true;
+					// _target_node.color = c_red;
 				}
 			}
 		}

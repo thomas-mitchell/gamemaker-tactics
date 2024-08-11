@@ -63,3 +63,15 @@ if(true) {
 	var _text_x = room_width - string_width(_text);
 	draw_text_block(_text_x, 0, _text, c_white, c_black);
 }
+
+// Draw current actors weapon
+if(oGame.current_actor != noone) {
+	var _text = "Weapon: ";
+	if (oGame.current_actor.equip_main_hand == noone) {
+		_text += "ERROR";	
+	} else {
+		_text += oGame.current_actor.equip_main_hand.name;	
+	}
+	var _text_x = room_width - string_width(_text);
+	draw_text_block(_text_x, 20, _text, c_white, c_black);
+}

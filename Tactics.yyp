@@ -62,6 +62,7 @@
     {"id":{"name":"scr_card_deck","path":"scripts/scr_card_deck/scr_card_deck.yy",},},
     {"id":{"name":"scr_draw_text_block","path":"scripts/scr_draw_text_block/scr_draw_text_block.yy",},},
     {"id":{"name":"scr_map","path":"scripts/scr_map/scr_map.yy",},},
+    {"id":{"name":"scr_resolve_attack","path":"scripts/scr_resolve_attack/scr_resolve_attack.yy",},},
     {"id":{"name":"scr_state_machine","path":"scripts/scr_state_machine/scr_state_machine.yy",},},
     {"id":{"name":"scr_state","path":"scripts/scr_state/scr_state.yy",},},
     {"id":{"name":"scr_terrain_type","path":"scripts/scr_terrain_type/scr_terrain_type.yy",},},

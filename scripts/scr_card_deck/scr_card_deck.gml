@@ -99,6 +99,11 @@ function CardDeck() constructor {
 		//	shuffle();
 		//}
 		
+		// Error checking
+		if (array_length(deck) < 1) {
+			show_debug_message("Attempted to draw from an empty deck!");	
+		}
+		
 		return array_shift(deck);
 	}
 	
