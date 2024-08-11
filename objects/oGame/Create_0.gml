@@ -7,6 +7,7 @@
 
 state = "initializing";
 
+draw_set_font(fnt_default);
 randomize();
 //random_set_seed(123456);
 

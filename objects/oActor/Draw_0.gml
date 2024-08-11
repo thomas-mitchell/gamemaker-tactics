@@ -35,10 +35,16 @@ if (oCursor.selected_actor == id) {
 // Draw self (in greyscale if shaken)
 if (shaken) {
 	shader_set(sh_greyscale);
-	draw_self();
-	shader_reset();
+}
+	
+if (shake > 0) {
+	draw_sprite_ext(sprite_index, -1, x + irandom_range(-shake_mag, shake_mag), y + irandom_range(-shake_mag, shake_mag), 1, 1, 0, c_white, 1);
 } else {
 	draw_self();
+}
+
+if (shaken) {
+	shader_reset();
 }
 
 // Draw shaken indicator

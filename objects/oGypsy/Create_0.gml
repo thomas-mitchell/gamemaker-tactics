@@ -13,5 +13,6 @@ attribute_vigor_die = 6;
 skill_fighting_die = 6;
 
 // Inventory
+array_push(inventory, new Weapon("Pistol"));
 array_push(inventory, new Weapon("Fists"));
 equip_weapon(inventory[0]);

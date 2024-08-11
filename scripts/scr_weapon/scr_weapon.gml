@@ -60,23 +60,23 @@ function Weapon(_name) constructor {
 	roll_damage_melee = function(_attacker, _target) {
 		var _total = 0;
 		for (var _index=0; _index<damage_melee_die_number; _index++) {
-			total += irandom_range(1, damage_melee_die_number);
+			_total += irandom_range(1, damage_melee_die_number);
 		}
-		total += damage_melee_bonus;
+		_total += damage_melee_bonus;
 		
 		// Add strength bonus (no wild die)
-		total += irandom_range(1, _attacker.attribute_strength_die) + _attacker.attribute_strength_bonus;
+		_total += irandom_range(1, _attacker.attribute_strength_die) + _attacker.attribute_strength_bonus;
 		
-		return total;
+		return _total;
 	}
 	
 	roll_damage_ranged = function(_attacker, _target) {
 		var _total = 0;
 		for (var _index=0; _index<damage_ranged_die_number; _index++) {
-			total += irandom_range(1, damage_ranged_die_number);
+			_total += irandom_range(1, damage_ranged_die_number);
 		}
-		total += damage_ranged_bonus;
+		_total += damage_ranged_bonus;
 		
-		return total;
+		return _total;
 	}
 }

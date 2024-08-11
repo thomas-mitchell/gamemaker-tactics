@@ -52,4 +52,18 @@ if (mouse_check_button_pressed(mb_right)) {
 	//	selected_actor = noone;
 	//	global.map.wipe_nodes();
 	//}
+	
+	if (selected_actor != noone && hover_node.attack_node) {
+		selected_actor.can_act = false;
+		selected_actor.actions -= 1;
+		selected_actor.attack_target = hover_node.occupant;
+		
+		//selected_actor.state = "begin attack";
+		selected_actor.state_machine.swap(new StateActorAttack(selected_actor, hover_node.occupant, ATTACK_TYPE.RANGED));
+		
+		selected_actor.attack_timer = 20;
+		
+		selected_actor = noone;
+		global.map.wipe_nodes();
+	}
 }

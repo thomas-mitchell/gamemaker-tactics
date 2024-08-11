@@ -14,5 +14,6 @@ skill_fighting_die = 8;
 skill_shooting_die = 8;
 
 // Inventory
+array_push(inventory, new Weapon("Pistol"));
 array_push(inventory, new Weapon("Fists"));
 equip_weapon(inventory[0]);

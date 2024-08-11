@@ -123,3 +123,7 @@ equip_off_hand = noone;
 equip_weapon = function(_weapon) {
 	equip_main_hand = _weapon;	// This will do for now	
 }
+
+// effects variables
+shake = 0;
+shake_mag = 0;

@@ -1,4 +1,8 @@
 /// @description Insert description here
+if (shake > 0) {
+	shake -= 1;	
+}
+
 state_machine.run();
 
 //switch (state) {
